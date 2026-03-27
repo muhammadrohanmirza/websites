@@ -1,0 +1,42 @@
+import type { Metadata } from 'next'
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
+import '../styles/globals.css'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: { default: 'Rohan Mirza Textiles', template: '%s | Rohan Mirza Textiles' },
+  description: 'Premium textile manufacturer and exporter from Karachi, Pakistan. Specializing in shop towels, terry towels, industrial and hospitality textiles. Exporting to 45+ countries since 2005.',
+  keywords: ['textile manufacturer Pakistan', 'terry towels exporter', 'shop towels Karachi', 'industrial textiles', 'hospitality textiles', 'B2B textiles Pakistan'],
+  openGraph: {
+    siteName: 'Rohan Mirza Textiles',
+    locale: 'en_US',
+    type: 'website',
+  },
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
+      <body>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  )
+}
